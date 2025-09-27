@@ -1,17 +1,30 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import { CartProvider } from "../context/CartContext";
+import type { Metadata } from "next";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const metadata: Metadata = {
+  title: "Trendy Haven - Fashion Redefined",
+  description: "Discover the latest fashion trends at Trendy Haven. Shop stylish, high-quality, and affordable clothing.",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body className="bg-white text-black">
-        <CartProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </CartProvider>
+      <body className="flex flex-col min-h-screen bg-white text-gray-900">
+        
+
+        {/* Page Content */}
+        <main className="flex-grow">{children}</main>
+
+        {/* Footer */}
+        <Footer />
       </body>
     </html>
   );
